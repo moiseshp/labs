@@ -1,12 +1,13 @@
+import type { IFuseOptions } from 'fuse.js';
 import { ArrowUpRightIcon } from 'lucide-react';
-import { SearchBox } from './_components/search-box';
+import { SearchBox, type MenuItem } from './_components/search-box';
 import data from '@/lib/data/product-search.json';
 
 export default function SearchPage() {
   return (
     <div className="flex flex-col h-dvh justify-between">
       <div className="bg-emerald-900 p-2 flex justify-center">
-        <SearchBox items={data.items} config={data.config} resultsLimit={data.resultsLimit} />
+        <SearchBox items={data.items} config={data.config as IFuseOptions<MenuItem>} resultsLimit={data.resultsLimit} />
       </div>
 
       <footer className="flex justify-center p-5">

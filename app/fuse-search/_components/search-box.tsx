@@ -27,7 +27,17 @@ export function SearchBox({ items, config, resultsLimit }: SearchBoxProps) {
 
   const results = useMemo(() => {
     const trimmed = deferredQuery.trim();
-    return trimmed ? fuse.search(trimmed, { limit: resultsLimit }) : [];
+    if (!trimmed) return [];
+
+    const matches = fuse.search(trimmed, { limit: resultsLimit });
+    if (matches.length === 0) return matches;
+
+    // Fuse score: 0 = perfect match, 1 = no match. Drop hits that are far
+    // worse than the best match instead of relying on a single global
+    // threshold, which either misses valid fuzzy matches or lets in
+    // unrelated ones depending on how good the top result is.
+    const topScore = matches[0].score ?? 0;
+    return matches.filter(match => (match.score ?? 0) <= topScore + 0.15);
   }, [fuse, deferredQuery, resultsLimit]);
 
   const isOpen = query.trim().length > 0;

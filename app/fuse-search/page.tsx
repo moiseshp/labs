@@ -10,12 +10,10 @@ export default function SearchPage() {
       </div>
 
       <footer className="flex justify-center p-5">
-        <h1 className="font-bold flex items-center gap-2">
+        <a className="flex items-center gap-2 font-bold" href="https://fusejs.io/" target="_blank" rel="noopener noreferrer">
           Fuse.js
-          <a href="https://fusejs.io/" target="_blank" rel="noopener noreferrer">
-            <ArrowUpRightIcon className="size-5" />
-          </a>
-        </h1>
+          <ArrowUpRightIcon className="size-5" />
+        </a>
       </footer>
     </div>
   );

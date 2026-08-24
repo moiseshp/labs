@@ -2,29 +2,20 @@
   "version": 8,
   "updatedAt": "2026-08-24",
   "config": {
-    "keys": [
-      {
-        "name": "name",
-        "weight": 2
+    "idField": "productId",
+    "fields": ["name", "keywords", "category", "description"],
+    "storeFields": ["name", "category", "description"],
+    "searchOptions": {
+      "boost": {
+        "name": 2,
+        "keywords": 1.5,
+        "category": 1.25,
+        "description": 0.75
       },
-      {
-        "name": "keywords",
-        "weight": 1.5
-      },
-      {
-        "name": "category",
-        "weight": 1.25
-      },
-      {
-        "name": "description",
-        "weight": 0.75
-      }
-    ],
-    "threshold": 0.4,
-    "ignoreLocation": true,
-    "ignoreDiacritics": true,
-    "minMatchCharLength": 2,
-    "useTokenSearch": true
+      "fuzzy": 0.2,
+      "prefix": true
+    },
+    "minQueryLength": 2
   },
   "resultsLimit": 20,
   "items": [

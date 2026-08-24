@@ -8,10 +8,6 @@
         "weight": 2
       },
       {
-        "name": "keywords",
-        "weight": 1.5
-      },
-      {
         "name": "category",
         "weight": 1.25
       },

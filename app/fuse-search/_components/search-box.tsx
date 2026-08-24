@@ -33,7 +33,7 @@ export function SearchBox({ items, config, resultsLimit }: SearchBoxProps) {
   const isOpen = query.trim().length > 0;
 
   return (
-    <div className="relative w-full max-w-xl px-5">
+    <div className="relative w-full max-w-xl">
       <div className="relative rounded-full bg-white px-2">
         <SearchIcon className="pointer-events-none absolute top-1/2 left-4 size-5 -translate-y-1/2 text-emerald-900" />
         <Input
